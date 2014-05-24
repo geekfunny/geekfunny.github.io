@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Geek Funny]]></title>
+  <subtitle><![CDATA[Keep calm and code on]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://www.geekfunny.com/"/>
+  <updated>2014-05-24T02:10:26.465Z</updated>
+  <id>http://www.geekfunny.com/</id>
+  
+  <author>
+    <name><![CDATA[Geek Funny]]></name>
+    <email><![CDATA[geekfunny@outlook.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+</feed>
