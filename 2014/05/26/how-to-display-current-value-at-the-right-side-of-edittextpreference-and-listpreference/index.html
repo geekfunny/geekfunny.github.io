@@ -163,16 +163,16 @@
 </code></pre><p>You can also create a custom ListPreference like the above code, and just change getText method to getValue.  </p>
 <h2 id="Thinking_more_">Thinking more  </h2>
 <p>There is another way to display the current value at the right side, you should just add this code to your activity:  </p>
-<pre><code>final ListPreference listPref = <span class="keyword">...</span>
-listPref.setLayoutResource(R.layout.preference_with_value);
-listPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        TextView textView = (TextView) findViewById(R.id.preference_value);
-        int index = listPref.findIndexOfValue(newValue.toString());
-        <span class="keyword">if</span> (index != -<span class="number">1</span>) {
-            textView.setText(listPref.getEntries()[index]);
+<pre><code>ListPreference listPreference = findPreference(key);
+listPreference.setLayoutResource(R.layout.preference_with_value);
+listPreference.setOnPreferenceChangeListener(<span class="keyword">new</span> OnPreferenceChangeListener() {
+    <span class="keyword">public</span> <span class="keyword">boolean</span> onPreferenceChange(Preference preference, Object newValue) {
+        TextView textValue = (TextView) findViewById(R.id.pref_value);
+        <span class="keyword">int</span> <span class="keyword">index</span> = listPreference.findIndexOfValue(newValue.toString());
+        <span class="keyword">if</span> (<span class="keyword">index</span> != -<span class="number">1</span>) {
+            textValue.setText(listPreference.getEntries()[<span class="keyword">index</span>]);
         }
-        <span class="keyword">return</span> true;
+        <span class="keyword">return</span> <span class="keyword">true</span>;
     }
 });  
 </code></pre><p>Considering the data validation to EditTextPreference dialog, maybe a custom EditTextPreference is better than above code.  </p>
