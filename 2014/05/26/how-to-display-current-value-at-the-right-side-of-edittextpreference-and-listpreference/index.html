@@ -9,7 +9,7 @@
     
     <meta name="author" content="Geek Funny">
     
-    <meta name="description" content="This blog describe how to create a custom EditTextPreference or ListPreference to display the current value at the right side, and give another way to code.">
+    <meta name="description" content="This blog describe how to create a custom EditTextPreference or ListPreference to display the current value at the right side.">
     
     
     
@@ -88,11 +88,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview_"><span class="toc-number">1.</span> <span class="toc-text">Overview  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Defining_custom_Preference_layout_in_XML_"><span class="toc-number">2.</span> <span class="toc-text">Defining custom Preference layout in XML  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating_a_custom_EditTextPreference_class_"><span class="toc-number">3.</span> <span class="toc-text">Creating a custom EditTextPreference class  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thinking_more_"><span class="toc-number">4.</span> <span class="toc-text">Thinking more  </span></a></li></ol>
 		
 		</div>
 		
-		<p>This blog describe how to create a custom EditTextPreference or ListPreference to display the current value at the right side, and give another way to code.<br><a id="more"></a></p>
+		<p>This blog describe how to create a custom EditTextPreference or ListPreference to display the current value at the right side.<br><a id="more"></a></p>
+<h2 id="Overview_">Overview  </h2>
 <blockquote>
 <p><a href="http://developer.android.com/guide/topics/ui/settings.html" target="_blank">Settings | Android Developer</a><br>Applications often include settings that allow users to modify app features and behaviors. For example, some apps allow users to specify whether notifications are enabled or specify how often the application syncs data with the cloud.  </p>
 <p>If you want to provide settings for your app, you should use Android’s Preference APIs to build an interface that’s consistent with the user experience in other Android apps (including the system settings).  </p>
@@ -100,7 +101,7 @@
 <p>However, when you select in the popup preference list or edit in the popup edit dialog, the popup dismissed without any UI feedback in the preference screen, you can not see the current value of EditTextPreference and ListPreference by default.  </p>
 <p>Instead of implementing onSharedPreferenceChanged to display the currently set value of the preference in the Preference summary, you can create a custom preference to display the current value at the right side of the EditTextPreference and ListPreference.  </p>
 <p>The following sections describe how to create a custom EditTextPreference or ListPreference to display the current value at the right side.  </p>
-<p><strong>Defining custom Preference layout in XML</strong>  </p>
+<h2 id="Defining_custom_Preference_layout_in_XML_">Defining custom Preference layout in XML  </h2>
 <p>Each Preference item in preference screen define its default layout in sdk/platforms/android-19/data/res/layout/preference.xml, create a new XML file named preference_with_value.xml under /layout directory and copy all content from default preference.xml, then add your custom value TextView after /RelativeLayout&gt; tag.  </p>
 <p>preference_with_value.xml:  </p>
 <pre><code>    <span class="tag">&lt;/<span class="title">RelativeLayout</span>&gt;</span>
@@ -122,7 +123,7 @@
         <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span> /&gt;</span>
 
 <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span>  
-</code></pre><p><strong>Creating a custom EditTextPreference class</strong>  </p>
+</code></pre><h2 id="Creating_a_custom_EditTextPreference_class_">Creating a custom EditTextPreference class  </h2>
 <p>To create your custom EditTextPreference class, you should call setLayoutResource to load your custom layout in the constructor method, and set the TextView in the override onBindView and setText method. For example:  </p>
 <pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EditTextPreferenceWithValue</span> <span class="keyword">extends</span> <span class="title">EditTextPreference</span> {</span>
     <span class="keyword">private</span> TextView textValue;
@@ -160,7 +161,7 @@
     }
 }  
 </code></pre><p>You can also create a custom ListPreference like the above code, and just change getText method to getValue.  </p>
-<p><strong>Thinking more</strong>  </p>
+<h2 id="Thinking_more_">Thinking more  </h2>
 <p>There is another way to display the current value at the right side, you should just add this code to your activity:  </p>
 <pre><code>final ListPreference listPref = <span class="keyword">...</span>
 listPref.setLayoutResource(R.layout.preference_with_value);
