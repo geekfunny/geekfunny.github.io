@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Keep calm and code on]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.geekfunny.com/"/>
-  <updated>2014-05-28T03:51:07.427Z</updated>
+  <updated>2014-05-28T03:57:12.288Z</updated>
   <id>http://www.geekfunny.com/</id>
   
   <author>
@@ -19,13 +19,14 @@
     <link href="http://www.geekfunny.com/2014/05/26/how-to-display-current-value-at-the-right-side-of-edittextpreference-and-listpreference/"/>
     <id>http://www.geekfunny.com/2014/05/26/how-to-display-current-value-at-the-right-side-of-edittextpreference-and-listpreference/</id>
     <published>2014-05-26T06:15:12.000Z</published>
-    <updated>2014-05-28T03:49:57.000Z</updated>
-    <content type="html"><![CDATA[<blockquote>
+    <updated>2014-05-28T03:56:44.000Z</updated>
+    <content type="html"><![CDATA[<p>This blog describe how to create a custom EditTextPreference or ListPreference to display the current value at the right side, and give another way to code.<br><a id="more"></a></p>
+<blockquote>
 <p><a href="http://developer.android.com/guide/topics/ui/settings.html" target="_blank">Settings | Android Developer</a><br>Applications often include settings that allow users to modify app features and behaviors. For example, some apps allow users to specify whether notifications are enabled or specify how often the application syncs data with the cloud.  </p>
 <p>If you want to provide settings for your app, you should use Android’s Preference APIs to build an interface that’s consistent with the user experience in other Android apps (including the system settings).  </p>
 </blockquote>
 <p>However, when you select in the popup preference list or edit in the popup edit dialog, the popup dismissed without any UI feedback in the preference screen, you can not see the current value of EditTextPreference and ListPreference by default.  </p>
-<p>Instead of implementing onSharedPreferenceChanged to display the currently set value of the preference in the Preference summary, you’ll need to create a custom preference to display the current value at the right side of the EditTextPreference and ListPreference.  </p>
+<p>Instead of implementing onSharedPreferenceChanged to display the currently set value of the preference in the Preference summary, you can create a custom preference to display the current value at the right side of the EditTextPreference and ListPreference.  </p>
 <p>The following sections describe how to create a custom EditTextPreference or ListPreference to display the current value at the right side.  </p>
 <p><strong>Defining custom Preference layout in XML</strong>  </p>
 <p>Each Preference item in preference screen define its default layout in sdk/platforms/android-19/data/res/layout/preference.xml, create a new XML file named preference_with_value.xml under /layout directory and copy all content from default preference.xml, then add your custom value TextView after /RelativeLayout&gt; tag.  </p>
@@ -88,7 +89,7 @@
 }  
 </code></pre><p>You can also create a custom ListPreference like the above code, and just change getText method to getValue.  </p>
 <p><strong>Thinking more</strong>  </p>
-<p>There is another way to display the current value, you should just add this code to your activity:  </p>
+<p>There is another way to display the current value at the right side, you should just add this code to your activity:  </p>
 <pre><code>final ListPreference listPref = <span class="keyword">...</span>
 listPref.setLayoutResource(R.layout.preference_with_value);
 listPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
@@ -103,7 +104,7 @@ listPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 });  
 </code></pre><p>Considering the data validation to EditTextPreference dialog, maybe a custom EditTextPreference is better than above code.  </p>
 ]]></content>
-    
+    <summary type="html"><![CDATA[<p>This blog describe how to create a custom EditTextPreference or ListPreference to display the current value at the right side, and give another way to code.<br>]]></summary>
     
       <category term="Android" scheme="http://www.geekfunny.com/tags/Android/"/>
     
